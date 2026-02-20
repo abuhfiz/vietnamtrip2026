@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇻🇳 HCMC Itinerary — AbuHafiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --navy: #1B2B4B;
+    --gold: #C9963A;
+    --red: #C0392B;
+    --green: #2D6A4F;
+    --light: #EAF2FF;
+    --stamp: #2C4A7C;
+    --text: #2C2C2C;
+    --muted: #6B6B6B;
+    --white: #FFFFFF;
+    --halal: #2D6A4F;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── PROGRESS BAR ── */
+  #progress-bar {
+    position: fixed; top: 0; left: 0; z-index: 9999;
+    height: 3px; width: 0%;
+    background: linear-gradient(90deg, var(--gold), #E8B96A);
+    transition: width 0.1s;
+    pointer-events: none;
+  }
+
+  /* ── BACK TO TOP ── */
+  #back-top {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+    width: 44px; height: 44px;
+    background: var(--navy); color: var(--gold);
+    border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.3s; display: flex; align-items: center; justify-content: center;
+  }
+  #back-top.visible { opacity: 1; transform: translateY(0); }
+  #back-top:hover { background: var(--gold); color: var(--navy); }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 998;
+    background: rgba(27,43,75,0.97);
+    backdrop-filter: blur(12px);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    color: var(--white); font-size: 1.1rem; letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .nav-brand span { color: var(--gold); }
+  .nav-links {
+    display: flex; gap: 0.3rem; list-style: none;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none; font-size: 0.75rem;
+    font-weight: 500; letter-spacing: 0.5px;
+    padding: 0.4rem 0.7rem;
+    border-radius: 20px;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--white);
+    background: rgba(201,150,58,0.25);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #1B2B4B 0%, #2C4A7C 50%, #1B2B4B 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 80px 2rem 3rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-flag {
+    font-size: 3.5rem; margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)}
+  }
+  .hero-eyebrow {
+    font-family: 'Caveat', cursive;
+    color: var(--gold); font-size: 1.3rem;
+    margin-bottom: 0.5rem; letter-spacing: 1px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    color: var(--white); line-height: 1;
+    margin-bottom: 0.5rem; font-weight: 900;
+  }
+  .hero-title span { color: var(--gold); font-style: italic; }
+  .hero-subtitle {
+    color: rgba(255,255,255,0.65);
+    font-size: 1rem; letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .hero-pills {
+    display: flex; flex-wrap: wrap; gap: 0.7rem;
+    justify-content: center; margin-bottom: 2rem;
+  }
+  .pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white); padding: 0.5rem 1.2rem;
+    border-radius: 50px; font-size: 0.85rem;
+    font-weight: 500; letter-spacing: 0.5px;
+    backdrop-filter: blur(4px);
+    transition: all 0.2s; cursor: default;
+  }
+  .pill:hover { background: rgba(255,255,255,0.18); transform: scale(1.04); }
+  .pill.gold { background: rgba(201,150,58,0.2); border-color: var(--gold); color: var(--gold); }
+
+  /* ── COUNTDOWN ── */
+  .hero-countdown {
+    display: flex; gap: 1.5rem; margin-bottom: 2rem;
+    flex-wrap: wrap; justify-content: center;
+  }
+  .countdown-block {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px; padding: 0.8rem 1.2rem;
+    text-align: center; min-width: 72px;
+    backdrop-filter: blur(4px);
+  }
+  .countdown-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--gold); line-height: 1;
+  }
+  .countdown-label {
+    font-size: 0.62rem; color: rgba(255,255,255,0.5);
+    text-transform: uppercase; letter-spacing: 1.5px;
+    margin-top: 0.2rem;
+  }
+  .countdown-title {
+    font-family: 'Caveat', cursive;
+    color: rgba(255,255,255,0.6); font-size: 1rem;
+    margin-bottom: 0.8rem; letter-spacing: 1px;
+  }
+
+  .hero-scroll {
+    color: rgba(255,255,255,0.4); font-size: 0.75rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)}
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 1000px; margin: 0 auto; }
+  .section-label {
+    font-family: 'Caveat', cursive;
+    color: var(--gold); font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--navy); margin-bottom: 0.5rem; line-height: 1.2;
+  }
+  .section-title span { color: var(--gold); font-style: italic; }
+  .section-desc {
+    color: var(--muted); font-size: 0.95rem;
+    margin-bottom: 2.5rem; max-width: 560px;
+    line-height: 1.7;
+  }
+  .divider {
+    width: 50px; height: 3px;
+    background: var(--gold);
+    margin: 1rem 0 2rem;
+    border-radius: 2px;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ── FLIGHT CARD ── */
+  .flight-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  @media(max-width:600px){ .flight-grid{grid-template-columns:1fr;} }
+  .flight-card {
+    background: var(--navy);
+    border-radius: 16px; padding: 1.5rem;
+    color: var(--white); position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+  }
+  .flight-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
+  .flight-card::before {
+    content: '✈';
+    position: absolute; right: 1rem; top: 1rem;
+    font-size: 3rem; opacity: 0.07;
+  }
+  .flight-route {
+    font-size: 0.7rem; color: var(--gold);
+    font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 1rem;
+  }
+  .flight-times {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .flight-time { text-align: center; }
+  .flight-time .time {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 700; line-height: 1;
+  }
+  .flight-time .label {
+    font-size: 0.65rem; color: rgba(255,255,255,0.5);
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .flight-arrow {
+    flex: 1; text-align: center;
+    color: var(--gold); font-size: 1.2rem;
+    animation: planeFloat 2s ease-in-out infinite;
+  }
+  @keyframes planeFloat {
+    0%,100%{transform:translateX(0)} 50%{transform:translateX(4px)}
+  }
+  .flight-details { display: flex; flex-direction: column; gap: 0.3rem; }
+  .flight-detail {
+    display: flex; justify-content: space-between;
+    font-size: 0.8rem; padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .flight-detail .key { color: rgba(255,255,255,0.5); }
+  .flight-detail .val { font-weight: 600; color: var(--gold); }
+  .flight-note {
+    background: rgba(201,150,58,0.1);
+    border: 1px solid rgba(201,150,58,0.3);
+    border-radius: 10px; padding: 1rem;
+    font-size: 0.85rem; color: var(--text);
+    display: flex; gap: 0.8rem; align-items: flex-start;
+  }
+  .flight-note .icon { font-size: 1.2rem; flex-shrink: 0; }
+
+  /* ── ACCOMMODATION ── */
+  .accom-card {
+    background: var(--white);
+    border-radius: 20px; padding: 2rem;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    align-items: start;
+  }
+  @media(max-width:600px){ .accom-card{grid-template-columns:1fr;} }
+  .accom-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+  .accom-address {
+    color: var(--muted); font-size: 0.85rem;
+    line-height: 1.6; margin-bottom: 1.2rem;
+  }
+  .accom-badge {
+    display: inline-block;
+    background: var(--navy); color: var(--white);
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 0.3rem 0.8rem; border-radius: 50px;
+    margin-bottom: 1.2rem;
+  }
+  .accom-features { display: flex; flex-direction: column; gap: 0.7rem; }
+  .accom-feature {
+    display: flex; align-items: center; gap: 0.8rem;
+    font-size: 0.88rem; transition: transform 0.2s;
+  }
+  .accom-feature:hover { transform: translateX(4px); }
+  .accom-feature .icon {
+    width: 32px; height: 32px;
+    background: var(--light);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .tip-box {
+    background: linear-gradient(135deg, #FFF9EE, #FFF3D4);
+    border: 1px solid rgba(201,150,58,0.3);
+    border-radius: 14px; padding: 1.2rem;
+    margin-top: 0;
+  }
+  .tip-box h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold); font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+  .tip-item {
+    display: flex; gap: 0.6rem;
+    font-size: 0.85rem; margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  /* ── DAY TABS ── */
+  .day-tabs {
+    display: flex; gap: 0.5rem;
+    overflow-x: auto; scrollbar-width: none;
+    padding-bottom: 0.5rem; margin-bottom: 2rem;
+  }
+  .day-tabs::-webkit-scrollbar { display: none; }
+  .day-tab {
+    flex-shrink: 0;
+    background: var(--white);
+    border: 2px solid transparent;
+    border-radius: 12px; padding: 0.8rem 1.2rem;
+    cursor: pointer; transition: all 0.25s;
+    text-align: center; min-width: 90px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .day-tab:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .day-tab.active {
+    background: var(--navy); border-color: var(--navy);
+    color: var(--white); transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(27,43,75,0.3);
+  }
+  .day-tab .day-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700; line-height: 1;
+  }
+  .day-tab .day-date { font-size: 0.68rem; opacity: 0.7; margin-top: 0.2rem; }
+  .day-tab .day-emoji { font-size: 1rem; margin-top: 0.2rem; }
+
+  .day-content { display: none; }
+  .day-content.active { display: block; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+  .day-header {
+    background: var(--navy);
+    border-radius: 16px 16px 0 0; padding: 1.5rem 2rem;
+    color: var(--white);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .day-header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-style: italic;
+  }
+  .day-header-date {
+    font-size: 0.75rem; color: var(--gold);
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .day-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .day-tag {
+    background: rgba(255,255,255,0.12);
+    color: var(--white); padding: 0.3rem 0.8rem;
+    border-radius: 50px; font-size: 0.72rem; font-weight: 500;
+  }
+
+  .timeline {
+    background: var(--white);
+    border-radius: 0 0 16px 16px;
+    padding: 1.5rem 2rem 2rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  }
+  .timeline-item {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 1.2rem; margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 39px; top: 36px; bottom: -16px;
+    width: 2px; background: #E8EDF5;
+  }
+  .timeline-time {
+    text-align: center; padding-top: 4px;
+  }
+  .time-badge {
+    background: var(--light);
+    color: var(--navy); font-size: 0.7rem;
+    font-weight: 600; padding: 0.3rem 0.4rem;
+    border-radius: 8px; line-height: 1.3;
+    display: inline-block;
+  }
+  .timeline-body {}
+  .timeline-title {
+    font-weight: 600; font-size: 0.95rem;
+    color: var(--navy); margin-bottom: 0.3rem;
+    display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+  }
+  .timeline-title .badge {
+    font-size: 0.65rem; font-weight: 600;
+    padding: 0.15rem 0.5rem; border-radius: 50px;
+    letter-spacing: 0.5px;
+  }
+  .badge-sport { background: #EFF6FF; color: #1D4ED8; }
+  .badge-food { background: #F0FDF4; color: #15803D; }
+  .badge-tour { background: #FEF3C7; color: #92400E; }
+  .badge-fun { background: #FDF4FF; color: #7E22CE; }
+  .badge-travel { background: #FFF1F2; color: #BE123C; }
+  .timeline-desc {
+    color: var(--muted); font-size: 0.83rem;
+    line-height: 1.6;
+  }
+  .timeline-desc strong { color: var(--text); }
+  .timeline-cost {
+    display: inline-block; margin-top: 0.4rem;
+    background: #FFF9EE; color: var(--gold);
+    font-size: 0.72rem; font-weight: 600;
+    padding: 0.2rem 0.6rem; border-radius: 6px;
+    border: 1px solid rgba(201,150,58,0.2);
+  }
+  .halal-note {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    background: #F0FDF4; color: var(--halal);
+    font-size: 0.72rem; font-weight: 600;
+    padding: 0.2rem 0.6rem; border-radius: 6px;
+    margin-top: 0.4rem; margin-left: 0.3rem;
+    border: 1px solid rgba(45,106,79,0.2);
+  }
+
+  /* ── PICKLEBALL ── */
+  .pb-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  @media(max-width:600px){ .pb-grid{grid-template-columns:1fr;} }
+  .pb-card {
+    background: var(--white);
+    border-radius: 16px; padding: 1.5rem;
+    border-top: 4px solid var(--navy);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pb-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+  .pb-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .pb-day {
+    font-size: 0.7rem; color: var(--gold);
+    font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 0.3rem;
+  }
+  .pb-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .pb-desc { color: var(--muted); font-size: 0.83rem; line-height: 1.6; }
+
+  /* ── SUOI TIEN ── */
+  .st-package {
+    background: linear-gradient(135deg, var(--navy), #2C4A7C);
+    border-radius: 20px; padding: 2rem;
+    color: var(--white); margin-bottom: 1.5rem;
+  }
+  .st-package-title {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem; color: var(--gold); margin-bottom: 0.3rem;
+  }
+  .st-package-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; margin-bottom: 0.5rem;
+  }
+  .st-price {
+    font-size: 0.85rem; color: rgba(255,255,255,0.7);
+    margin-bottom: 1.5rem;
+  }
+  .st-price strong { color: var(--gold); font-size: 1.1rem; }
+  .st-includes {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;
+  }
+  @media(max-width:500px){ .st-includes{grid-template-columns:1fr;} }
+  .st-include-item {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    font-size: 0.83rem; line-height: 1.5;
+  }
+  .st-include-item .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); margin-top: 6px; flex-shrink: 0;
+  }
+  .st-warning {
+    background: rgba(201,150,58,0.15);
+    border: 1px solid rgba(201,150,58,0.4);
+    border-radius: 10px; padding: 0.8rem 1rem;
+    font-size: 0.82rem; margin-top: 1rem;
+    display: flex; gap: 0.5rem; align-items: flex-start;
+  }
+  .addon-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  @media(max-width:500px){ .addon-grid{grid-template-columns:1fr;} }
+  .addon-card {
+    background: var(--white); border-radius: 14px; padding: 1.2rem;
+    border-left: 4px solid var(--red);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s;
+  }
+  .addon-card:hover { transform: translateX(4px); }
+  .addon-title {
+    font-weight: 600; font-size: 0.9rem;
+    color: var(--navy); margin-bottom: 0.3rem;
+  }
+  .addon-desc { color: var(--muted); font-size: 0.8rem; line-height: 1.5; }
+  .addon-price {
+    display: inline-block; margin-top: 0.5rem;
+    background: #FFF0F0; color: var(--red);
+    font-size: 0.72rem; font-weight: 700;
+    padding: 0.2rem 0.6rem; border-radius: 6px;
+  }
+
+  /* ── HALAL FOOD ── */
+  .halal-filter-bar {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .halal-filter-btn {
+    background: var(--white); border: 2px solid #E8EDF5;
+    border-radius: 50px; padding: 0.4rem 1rem;
+    font-size: 0.78rem; font-weight: 600; cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .halal-filter-btn:hover { border-color: var(--navy); color: var(--navy); }
+  .halal-filter-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .halal-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .halal-card {
+    background: var(--white); border-radius: 16px; padding: 1.2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 3px solid var(--halal);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .halal-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+  .halal-card.top { border-top-color: var(--gold); }
+  .halal-card.avoid { border-top-color: var(--red); }
+  .halal-card.mixed { border-top-color: #F59E0B; }
+  .halal-card.hidden { display: none; }
+  .halal-badge {
+    position: absolute; top: 0.8rem; right: 0.8rem;
+    font-size: 0.65rem; font-weight: 700;
+    padding: 0.2rem 0.5rem; border-radius: 50px;
+    letter-spacing: 0.5px;
+  }
+  .hb-top { background: #FEF9EC; color: var(--gold); }
+  .hb-halal { background: #F0FDF4; color: var(--halal); }
+  .hb-avoid { background: #FFF1F2; color: var(--red); }
+  .hb-mixed { background: #FFFBEB; color: #92400E; }
+  .halal-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; color: var(--navy);
+    margin-bottom: 0.3rem; padding-right: 3rem;
+  }
+  .halal-desc { color: var(--muted); font-size: 0.8rem; line-height: 1.5; }
+
+  /* ── BUDGET ── */
+  .budget-table {
+    width: 100%; border-collapse: collapse;
+    background: var(--white); border-radius: 16px;
+    overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    font-size: 0.88rem;
+  }
+  .budget-table thead th {
+    background: var(--navy); color: var(--white);
+    padding: 1rem 1.2rem; text-align: left;
+    font-size: 0.75rem; letter-spacing: 1px;
+    text-transform: uppercase; font-weight: 600;
+  }
+  .budget-table tbody tr:nth-child(even) { background: #F8FAFF; }
+  .budget-table tbody td { padding: 0.9rem 1.2rem; border-bottom: 1px solid #EEF2F8; }
+  .budget-table tbody tr:last-child td { border-bottom: none; }
+  .budget-table tfoot td {
+    padding: 1rem 1.2rem;
+    background: linear-gradient(135deg, #FFF9EE, #FFF3D4);
+    font-weight: 700; color: var(--navy);
+    border-top: 2px solid var(--gold);
+    font-size: 0.95rem;
+  }
+  .cost-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem; border-radius: 6px;
+    font-size: 0.78rem; font-weight: 600;
+  }
+  .cost-booked { background: #F0FDF4; color: var(--halal); }
+  .cost-rm { background: #FFF9EE; color: var(--gold); }
+
+  /* ── CURRENCY CONVERTER ── */
+  .currency-widget {
+    background: var(--navy); border-radius: 20px; padding: 2rem;
+    color: var(--white); text-align: center; max-width: 440px; margin: 0 auto 2.5rem;
+    box-shadow: 0 8px 30px rgba(27,43,75,0.3);
+  }
+  .currency-label { font-size: 0.75rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .currency-rate {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; color: var(--white); margin-bottom: 1.5rem;
+  }
+  .currency-rate span { color: var(--gold); }
+  .currency-input-row {
+    display: flex; gap: 1rem; align-items: center;
+    flex-wrap: wrap; justify-content: center;
+  }
+  .currency-input-group { text-align: left; }
+  .currency-input-group label {
+    display: block; font-size: 0.7rem;
+    color: rgba(255,255,255,0.5); margin-bottom: 0.3rem;
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .currency-input-group input {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px; padding: 0.7rem 1rem;
+    color: var(--white); font-size: 1.1rem;
+    font-family: 'DM Sans', sans-serif;
+    width: 140px; font-weight: 600;
+    outline: none; transition: border-color 0.2s;
+  }
+  .currency-input-group input:focus { border-color: var(--gold); }
+  .currency-arrow { font-size: 1.5rem; color: var(--gold); cursor: pointer; transition: transform 0.3s; }
+  .currency-arrow:hover { transform: rotate(180deg); }
+
+  /* ── QUICK CONVERT BUTTONS ── */
+  .quick-convert {
+    margin-top: 1.2rem; display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;
+  }
+  .qc-btn {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8); border-radius: 8px; padding: 0.3rem 0.8rem;
+    font-size: 0.75rem; cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .qc-btn:hover { background: rgba(201,150,58,0.2); border-color: var(--gold); color: var(--gold); }
+
+  /* ── CHECKLIST ── */
+  .check-progress-bar {
+    background: #E8EDF5; border-radius: 50px; height: 8px;
+    margin-bottom: 1.5rem; overflow: hidden;
+  }
+  .check-progress-fill {
+    height: 100%; background: linear-gradient(90deg, var(--green), #4A9B72);
+    border-radius: 50px; transition: width 0.5s ease;
+  }
+  .check-progress-label {
+    font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem;
+    display: flex; justify-content: space-between;
+  }
+  .check-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  }
+  @media(max-width:600px){ .check-grid{grid-template-columns:1fr;} }
+  .check-section {
+    background: var(--white); border-radius: 16px; padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .check-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; color: var(--navy);
+    margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+  }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 0.8rem;
+    margin-bottom: 0.7rem; font-size: 0.85rem;
+    cursor: pointer; user-select: none;
+  }
+  .check-item input[type="checkbox"] {
+    width: 16px; height: 16px; margin-top: 2px;
+    accent-color: var(--navy); flex-shrink: 0; cursor: pointer;
+  }
+  .check-item label { cursor: pointer; line-height: 1.5; }
+  .check-item input:checked + label {
+    text-decoration: line-through; color: var(--muted);
+  }
+
+  /* ── TIPS ── */
+  .tips-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+  .tip-card {
+    background: var(--white); border-radius: 16px; padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .tip-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+  .tip-card-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .tip-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; color: var(--navy); margin-bottom: 0.5rem;
+  }
+  .tip-card-body { color: var(--muted); font-size: 0.82rem; line-height: 1.6; }
+  .tip-card-body strong { color: var(--text); }
+
+  /* ── TIP MODAL ── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 9000;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 2rem;
+    opacity: 0; pointer-events: none; transition: opacity 0.25s;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal-box {
+    background: var(--white); border-radius: 20px;
+    padding: 2rem; max-width: 440px; width: 100%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    transform: scale(0.92); transition: transform 0.25s;
+  }
+  .modal-overlay.open .modal-box { transform: scale(1); }
+  .modal-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; color: var(--navy); margin-bottom: 0.8rem;
+  }
+  .modal-body { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+  .modal-body strong { color: var(--text); }
+  .modal-close {
+    display: block; margin: 1.5rem 0 0 auto;
+    background: var(--navy); color: var(--white);
+    border: none; border-radius: 10px;
+    padding: 0.6rem 1.4rem; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-weight: 600;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 2rem;
+    font-size: 0.8rem;
+  }
+  footer strong { color: var(--gold); }
+
+  /* ── ALT BG ── */
+  .bg-alt { background: #EEF4FF; }
+  .bg-dark { background: var(--navy); }
+  .bg-dark .section-title { color: var(--white); }
+  .bg-dark .section-desc { color: rgba(255,255,255,0.5); }
+  .bg-dark .section-label { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:768px){
+    .nav-links { display: none; }
+    section { padding: 3.5rem 1.2rem; }
+  }
+
+  /* ── WEATHER WIDGET ── */
+  .weather-banner {
+    background: linear-gradient(135deg, #1565C0, #1976D2);
+    border-radius: 14px; padding: 1.2rem 1.5rem;
+    color: white; display: flex; align-items: center;
+    gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem;
+  }
+  .weather-icon { font-size: 2.5rem; }
+  .weather-temp {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+  }
+  .weather-label { font-size: 0.78rem; opacity: 0.75; margin-top: 0.2rem; }
+  .weather-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-left: auto; }
+  .weather-tag {
+    background: rgba(255,255,255,0.15); border-radius: 8px;
+    padding: 0.3rem 0.7rem; font-size: 0.78rem;
+  }
+
+  /* ── PACKING SUMMARY ── */
+  .pack-summary {
+    background: var(--white); border-radius: 14px; padding: 1rem 1.5rem;
+    margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    font-size: 0.88rem;
+  }
+  .pack-summary .big { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold); font-weight: 700; }
+  .pack-summary .small { color: var(--muted); font-size: 0.8rem; }
+
+  /* ── MAP LINK BUTTON ── */
+  .map-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--navy); color: var(--white);
+    border-radius: 10px; padding: 0.5rem 1rem;
+    font-size: 0.78rem; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+    margin-top: 0.5rem;
+  }
+  .map-btn:hover { background: var(--gold); transform: translateY(-1px); }
+
+  /* ── TOAST ── */
+  #toast {
+    position: fixed; bottom: 5rem; left: 50%; transform: translateX(-50%) translateY(40px);
+    background: var(--navy); color: var(--white);
+    padding: 0.7rem 1.4rem; border-radius: 50px;
+    font-size: 0.82rem; font-weight: 500;
+    z-index: 9999; opacity: 0;
+    transition: all 0.3s; pointer-events: none;
+    white-space: nowrap;
+  }
+  #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ── SEARCH BAR ── */
+  .search-container {
+    position: sticky; top: 60px; z-index: 997;
+    background: var(--white); padding: 1rem 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    display: none; opacity: 0; transition: opacity 0.3s;
+  }
+  .search-container.visible { display: block; opacity: 1; }
+  .search-box {
+    max-width: 600px; margin: 0 auto; position: relative;
+  }
+  .search-input {
+    width: 100%; padding: 0.9rem 3rem 0.9rem 1.2rem;
+    border: 2px solid #E8EDF5; border-radius: 50px;
+    font-size: 0.9rem; font-family: 'DM Sans', sans-serif;
+    outline: none; transition: border-color 0.2s;
+  }
+  .search-input:focus { border-color: var(--gold); }
+  .search-icon {
+    position: absolute; right: 1.2rem; top: 50%;
+    transform: translateY(-50%); font-size: 1.1rem;
+    color: var(--muted); pointer-events: none;
+  }
+  .search-results {
+    position: absolute; top: calc(100% + 0.5rem); left: 0; right: 0;
+    background: var(--white); border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    max-height: 400px; overflow-y: auto;
+    display: none; z-index: 999;
+  }
+  .search-results.show { display: block; }
+  .search-result-item {
+    padding: 0.9rem 1.2rem; cursor: pointer;
+    border-bottom: 1px solid #F0F2F5;
+    transition: background 0.2s;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .search-result-item:last-child { border-bottom: none; }
+  .search-result-item:hover { background: #F8FAFF; }
+  .search-result-icon { font-size: 1.2rem; flex-shrink: 0; }
+  .search-result-text { flex: 1; }
+  .search-result-title { font-weight: 600; font-size: 0.88rem; color: var(--navy); }
+  .search-result-desc { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+  .search-no-results {
+    padding: 2rem; text-align: center; color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  /* ── LOCATION QUICK ACTIONS ── */
+  .location-actions {
+    display: inline-flex; gap: 0.4rem; flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+  .loc-btn {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    background: rgba(27,43,75,0.08); color: var(--navy);
+    border: 1px solid rgba(27,43,75,0.12);
+    border-radius: 8px; padding: 0.35rem 0.7rem;
+    font-size: 0.72rem; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+    cursor: pointer;
+  }
+  .loc-btn:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .loc-btn.primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .loc-btn.primary:hover { background: var(--gold); border-color: var(--gold); }
+
+  /* ── FLOATING SEARCH BUTTON ── */
+  #search-fab {
+    position: fixed; bottom: 5.5rem; right: 2rem; z-index: 998;
+    width: 50px; height: 50px;
+    background: var(--gold); color: var(--navy);
+    border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 20px rgba(201,150,58,0.4);
+    transition: all 0.3s; display: flex; align-items: center; justify-content: center;
+  }
+  #search-fab:hover { transform: scale(1.1); background: #E8B96A; }
+
+  /* ── HALAL CARD ENHANCEMENTS ── */
+  .halal-card-actions {
+    margin-top: 0.8rem; padding-top: 0.8rem;
+    border-top: 1px solid #F0F2F5;
+    display: flex; gap: 0.4rem; flex-wrap: wrap;
+  }
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div id="progress-bar"></div>
+<!-- BACK TO TOP -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+<!-- SEARCH FAB -->
+<button id="search-fab" onclick="toggleSearch()" title="Search places">🔍</button>
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- SEARCH BAR -->
+<div class="search-container" id="search-container">
+  <div class="search-box">
+    <input type="text" class="search-input" id="search-input" placeholder="🔍 Search restaurants, attractions, hotels..." oninput="searchPlaces()" onkeydown="if(event.key==='Escape')toggleSearch()">
+    <span class="search-icon">🔍</span>
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+
+<!-- TIP MODAL -->
+<div class="modal-overlay" id="tipModal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <div class="modal-icon" id="modal-icon">🌡️</div>
+    <div class="modal-title" id="modal-title">Title</div>
+    <div class="modal-body" id="modal-body">Body</div>
+    <button class="modal-close" onclick="document.getElementById('tipModal').classList.remove('open')">Close ✕</button>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-brand">Abu<span>Hafiz</span> 🇻🇳</div>
+  <ul class="nav-links">
+    <li><a href="#flight">Flight</a></li>
+    <li><a href="#stay">Stay</a></li>
+    <li><a href="#days">Itinerary</a></li>
+    <li><a href="#pickleball">Pickleball</a></li>
+    <li><a href="#suoitien">Suoi Tien</a></li>
+    <li><a href="#halal">Halal Food</a></li>
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="#checklist">Checklist</a></li>
+    <li><a href="#tips">Tips</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-flag">🇻🇳</div>
+  <div class="hero-eyebrow">AbuHafiz presents</div>
+  <h1 class="hero-title">Ho Chi Minh<br><span>City</span></h1>
+  <p class="hero-subtitle">Sport & Travel Combined</p>
+  <div class="hero-pills">
+    <span class="pill">📅 7–11 April 2026</span>
+    <span class="pill">👥 4 Travellers</span>
+    <span class="pill gold">🏸 3 Days Pickleball</span>
+    <span class="pill">🎢 Suoi Tien</span>
+    <span class="pill">🌿 100% Halal</span>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-title">⏳ Countdown to Departure</div>
+  <div class="hero-countdown">
+    <div class="countdown-block"><div class="countdown-num" id="cd-days">--</div><div class="countdown-label">Days</div></div>
+    <div class="countdown-block"><div class="countdown-num" id="cd-hours">--</div><div class="countdown-label">Hours</div></div>
+    <div class="countdown-block"><div class="countdown-num" id="cd-mins">--</div><div class="countdown-label">Mins</div></div>
+    <div class="countdown-block"><div class="countdown-num" id="cd-secs">--</div><div class="countdown-label">Secs</div></div>
+  </div>
+
+  <div class="hero-scroll">↓ scroll to explore</div>
+</section>
+
+<!-- FLIGHT -->
+<section id="flight">
+  <div class="section-inner">
+    <div class="section-label reveal">Getting there</div>
+    <h2 class="section-title reveal">Flight <span>Overview</span></h2>
+    <div class="divider reveal"></div>
+
+    <!-- WEATHER BANNER -->
+    <div class="weather-banner reveal">
+      <div class="weather-icon">🌤️</div>
+      <div>
+        <div class="weather-temp">28–35°C</div>
+        <div class="weather-label">Ho Chi Minh City · April 2026</div>
+      </div>
+      <div class="weather-tags">
+        <span class="weather-tag">☀️ Hot & Humid</span>
+        <span class="weather-tag">🌦️ Afternoon showers</span>
+        <span class="weather-tag">🧴 SPF 50+ essential</span>
+      </div>
+    </div>
+
+    <div class="flight-grid">
+      <div class="flight-card reveal">
+        <div class="flight-route">✈ 7 April — KUL → SGN</div>
+        <div class="flight-times">
+          <div class="flight-time"><div class="time">6:55</div><div class="label">Departure</div></div>
+          <div class="flight-arrow">——✈——</div>
+          <div class="flight-time"><div class="time">8:05</div><div class="label">Arrival</div></div>
+        </div>
+        <div class="flight-details">
+          <div class="flight-detail"><span class="key">Flight</span><span class="val">AK520</span></div>
+          <div class="flight-detail"><span class="key">Booking ID</span><span class="val">R94HQV</span></div>
+          <div class="flight-detail"><span class="key">Duration</span><span class="val">~1h 10m</span></div>
+        </div>
+      </div>
+      <div class="flight-card reveal reveal-delay-1">
+        <div class="flight-route">✈ 11 April — SGN → KUL</div>
+        <div class="flight-times">
+          <div class="flight-time"><div class="time">21:10</div><div class="label">Departure</div></div>
+          <div class="flight-arrow">——✈——</div>
+          <div class="flight-time"><div class="time">00:05</div><div class="label">Arrival +1</div></div>
+        </div>
+        <div class="flight-details">
+          <div class="flight-detail"><span class="key">Flight</span><span class="val">AK525</span></div>
+          <div class="flight-detail"><span class="key">Booking ID</span><span class="val">LYMC4M</span></div>
+          <div class="flight-detail"><span class="key">Duration</span><span class="val">~1h 55m</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="flight-note reveal">
+      <span class="icon">🧳</span>
+      <div><strong>Luggage:</strong> 20kg per pair (return trip only) &nbsp;·&nbsp; <strong>Meals:</strong> Not provided — eat before boarding or bring snacks! &nbsp;·&nbsp; <strong>Cost:</strong> RM341 per person (booked ✅)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOMMODATION -->
+<section id="stay" class="bg-alt">
+  <div class="section-inner">
+    <div class="section-label reveal">Where we sleep</div>
+    <h2 class="section-title reveal">Our <span>Accommodation</span></h2>
+    <div class="divider reveal"></div>
+    <div class="accom-card reveal">
+      <div>
+        <div class="accom-badge">District 1 · Ho Chi Minh City</div>
+        <div class="accom-name">Nicecy Hotel<br>Apartment Sai Gon City</div>
+        <div class="accom-address">📍 345 Tran Hung Dao Street,<br>Cau Kho Ward, District 1,<br>Ho Chi Minh City, Vietnam 700000</div>
+        <div class="accom-features">
+          <div class="accom-feature"><div class="icon">🛍️</div><span>10 min walk to Ben Thanh Market</span></div>
+          <div class="accom-feature"><div class="icon">🌙</div><span>5 min walk to Bui Vien Street</span></div>
+          <div class="accom-feature"><div class="icon">🚇</div><span>Close to Metro Line 1 (Ben Thanh Station)</span></div>
+          <div class="accom-feature"><div class="icon">🚶</div><span>Walking distance to most District 1 attractions</span></div>
+        </div>
+        <a class="map-btn" href="https://maps.google.com/?q=345+Tran+Hung+Dao,+District+1,+Ho+Chi+Minh+City" target="_blank">🗺️ Open in Google Maps</a>
+      </div>
+      <div class="tip-box">
+        <h4>💡 Hotel Tips</h4>
+        <div class="tip-item">⚠️ <span><strong>Apartment Cafe lift charge:</strong> Skip the lift — take the stairs to avoid paying!</span></div>
+        <div class="tip-item">🔐 <span>Use hotel safe for passports and valuables</span></div>
+        <div class="tip-item">🕌 <span>Nearest halal restaurants are all within 10 min walk</span></div>
+        <div class="tip-item">🌡️ <span>Room A/C is strong — pack a light jacket for indoor use!</span></div>
+        <div class="tip-item">🚕 <span>Grab pickup point: hotel main entrance on Tran Hung Dao St</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ITINERARY -->
+<section id="days">
+  <div class="section-inner">
+    <div class="section-label reveal">Day by day</div>
+    <h2 class="section-title reveal">Full <span>Itinerary</span></h2>
+    <div class="divider reveal"></div>
+
+    <div class="day-tabs reveal">
+      <div class="day-tab active" onclick="showDay(1, this)"><div class="day-num">1</div><div class="day-date">7 Apr</div><div class="day-emoji">✈️</div></div>
+      <div class="day-tab" onclick="showDay(2, this)"><div class="day-num">2</div><div class="day-date">8 Apr</div><div class="day-emoji">🏸</div></div>
+      <div class="day-tab" onclick="showDay(3, this)"><div class="day-num">3</div><div class="day-date">9 Apr</div><div class="day-emoji">🎢</div></div>
+      <div class="day-tab" onclick="showDay(4, this)"><div class="day-num">4</div><div class="day-date">10 Apr</div><div class="day-emoji">🚤</div></div>
+      <div class="day-tab" onclick="showDay(5, this)"><div class="day-num">5</div><div class="day-date">11 Apr</div><div class="day-emoji">🏠</div></div>
+    </div>
+
+    <!-- DAY 1 -->
+    <div class="day-content active" id="day-1">
+      <div class="day-header">
+        <div><div class="day-header-date">Tuesday · 7 April 2026</div><div class="day-header-title">Arrival & District 1 Exploration</div></div>
+        <div class="day-tags"><span class="day-tag">✈️ Arrival</span><span class="day-tag">🛍️ Market</span><span class="day-tag">🍜 Food</span></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">Morning</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">✈️ Arrive at Tan Son Nhat Airport <span class="badge badge-travel">TRAVEL</span></div>
+            <div class="timeline-desc">Flight AK520 lands at <strong>8:05 AM</strong>. Clear immigration, collect bags. Book a <strong>Grab</strong> to Nicecy Hotel — about 30-40 min, ~RM23-31.<br>Check in, freshen up, drop bags!</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">1 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🍜 Lunch — Pho Rahim <span class="badge badge-food">HALAL ✅</span></div>
+            <div class="timeline-desc">First meal in Saigon! Head to <strong>Pho Rahim @ District 1</strong> — the most recommended halal pho spot by Malaysian Muslim travellers. Authentic Vietnamese pho, halal certified.</div>
+            <span class="timeline-cost">~RM9-12 per person</span>
+            <span class="halal-note">🟢 Halal Verified</span>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Pho+Rahim+District+1+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+              <button class="loc-btn" onclick="shareLocation('Pho Rahim','District 1, HCMC')">📤 Share</button>
+              <button class="loc-btn" onclick="saveLocation('Pho Rahim','🍜 Halal pho')">⭐ Save</button>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">2:30 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🏛️ Saigon Central Post Office & Notre-Dame Cathedral</div>
+            <div class="timeline-desc">French colonial architecture at its finest. Beautiful interior — great for photos! Notre-Dame Cathedral is right next door (under renovation but exterior is stunning). <strong>Free entry.</strong></div>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Saigon+Central+Post+Office" target="_blank">🗺️ Post Office</a>
+              <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Notre-Dame+Cathedral+Ho+Chi+Minh" target="_blank">🗺️ Cathedral</a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">3:15 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">📚 Book Street (Nguyen Van Binh)</div>
+            <div class="timeline-desc">Charming pedestrian street lined with bookstores, art displays and cafes. Good for a chill stroll and unique photos.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">4 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🛍️ Ben Thanh Market</div>
+            <div class="timeline-desc">Iconic HCMC landmark! Browse souvenirs, clothes and local goods. <strong>Bargain hard</strong> — start at 50% of the asking price. Great energy and atmosphere.</div>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Ben+Thanh+Market+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+              <a class="loc-btn" href="https://www.grab.com/sg/download/" target="_blank">🚕 Book Grab</a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">5:30 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🍽️ Dinner — The Daun Restaurant <span class="badge badge-food">HALAL ✅</span></div>
+            <div class="timeline-desc">Modern Vietnamese halal cuisine. Great ambiance and a solid menu for the whole group.</div>
+            <span class="timeline-cost">~RM15-23 per person</span>
+            <span class="halal-note">🟢 Halal Verified</span>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=The+Daun+Restaurant+District+1+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+              <button class="loc-btn" onclick="shareLocation('The Daun Restaurant','HCMC')">📤 Share</button>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">7:30 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🌃 Bui Vien Walking Street</div>
+            <div class="timeline-desc">Experience the famous Saigon nightlife street — street performers, food stalls, vibrant atmosphere. Just 5 min walk from hotel. Perfect for an evening stroll. Early rest after — big day tomorrow!</div>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Bui+Vien+Street+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day-content" id="day-2">
+      <div class="day-header">
+        <div><div class="day-header-date">Wednesday · 8 April 2026</div><div class="day-header-title">Pickleball + Cu Chi Tunnels</div></div>
+        <div class="day-tags"><span class="day-tag">🏸 Coaching</span><span class="day-tag">🪖 History</span><span class="day-tag">☕ Cafes</span></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">7 AM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">☕ Breakfast — Katinat <span class="badge badge-food">HALAL ✅</span></div>
+            <div class="timeline-desc">Quick breakfast before pickleball. <strong>Katinat</strong> is cheap, good, and the flavour is very Malay-friendly (air tekak Melayu!). Just a short walk from hotel.</div>
+            <span class="timeline-cost">~RM6-9 per person</span>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Katinat+District+1+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">8 AM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🏸 Pickleball Session #1 — Coaching <span class="badge badge-sport">SPORT</span></div>
+            <div class="timeline-desc">Professional coaching session at <strong>Reclub</strong>. Learn techniques, strategies, and drills. Duration: <strong>2 hours</strong>. Bring: sports attire, water bottle, towel. <strong>Book in advance!</strong></div>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Reclub+Ho+Chi+Minh+City+Pickleball" target="_blank">🗺️ Maps</a>
+              <a class="loc-btn" href="https://www.klook.com" target="_blank">📅 Book Session</a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">10:30 AM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🪖 Cu Chi Tunnels Half-Day Tour <span class="badge badge-tour">TOUR</span></div>
+            <div class="timeline-desc">Pick up from hotel. 1.5 hrs to Cu Chi, 2 hrs exploring the legendary underground tunnels used during the Vietnam War. Crawl through tunnels, see booby traps, and learn the history. Optional shooting range available.<br><strong>⚠️ Confirm halal lunch when booking!</strong></div>
+            <span class="timeline-cost">~RM80 per person via Klook</span>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.klook.com/en-SG/activity/1235-cu-chi-tunnels-half-day-tour-ho-chi-minh/" target="_blank">📅 Book on Klook</a>
+              <a class="loc-btn" href="https://www.google.com/maps/search/?api=1&query=Cu+Chi+Tunnels+Vietnam" target="_blank">🗺️ Maps</a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">12:30 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🍽️ Lunch — included with tour <span class="badge badge-food">HALAL ✅</span></div>
+            <div class="timeline-desc">Local lunch near Cu Chi tunnels area. Confirm halal options when booking the tour. Usually rice, vegetables and tofu options available.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">3:30 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">☕ Apartment Cafe / Rest</div>
+            <div class="timeline-desc">Back in the city. Head to <strong>Apartment Cafe</strong> for coffee with a view — or just rest at hotel. <strong>Remember: take the stairs, not the lift!</strong></div>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=42+Nguyen+Hue+Apartment+Cafe+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">6 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🍜 Street Food Crawl <span class="badge badge-food">HALAL ✅</span></div>
+            <div class="timeline-desc">Explore halal street food around District 1. Try <strong>Banh Mi</strong>, fresh spring rolls (Goi Cuon), and a bowl at <strong>Pho Muslim @ District 1</strong>.</div>
+            <span class="timeline-cost">~RM12-18 per person</span>
+            <span class="halal-note">🟢 Halal Only</span>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Pho+Muslim+District+1+Ho+Chi+Minh" target="_blank">🗺️ Pho Muslim</a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">8:30 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">☕ Evening Chill — Cong Ca Phe</div>
+            <div class="timeline-desc">Wind down at the iconic communist-themed <strong>Cong Ca Phe</strong>. Great ambiance, good coffee, cool aesthetic.</div>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Cong+Caphe+District+1+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day-content" id="day-3">
+      <div class="day-header">
+        <div><div class="day-header-date">Thursday · 9 April 2026</div><div class="day-header-title">Pickleball Morning + Suoi Tien!</div></div>
+        <div class="day-tags"><span class="day-tag">🏸 Social Game</span><span class="day-tag">🎢 Theme Park</span><span class="day-tag">🌊 Water Park</span></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">7 AM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🏸 Pickleball Session #2 — Social Game <span class="badge badge-sport">SPORT</span></div>
+            <div class="timeline-desc">Early morning social game at <strong>Reclub</strong>. Connect with local Vietnamese pickleball players. Duration: <strong>2 hours</strong>. Stay well hydrated — it's going to be a big day!</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">9 AM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🚿 Quick Shower & Pack for Suoi Tien</div>
+            <div class="timeline-desc">Back to hotel. Quick shower. Pack your bag: <strong>swimwear, towel, dry clothes, sunscreen, waterproof phone pouch, and cash (300-400k VND)</strong>. Light breakfast — don't eat too heavy before rides!</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">10 AM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🚇 Travel to Suoi Tien — Metro Line 1 <span class="badge badge-travel">TRAVEL</span></div>
+            <div class="timeline-desc">Walk to <strong>Ben Thanh Metro Station</strong> (10 min from hotel). Take Metro Line 1 directly to <strong>Suoi Tien Station</strong>, then 5 min walk to park. Fastest, cheapest option.</div>
+            <span class="timeline-cost">~RM3 per person (Metro)</span>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.google.com/maps/dir/?api=1&destination=Suoi+Tien+Theme+Park+Ho+Chi+Minh" target="_blank">🗺️ Directions</a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">11 AM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🎢 Suoi Tien — Thrill Rides <span class="badge badge-fun">FUN</span></div>
+            <div class="timeline-desc">Show Klook QR code, collect wristbands, store bags in locker. Hit the rides while you're still dry!<br><strong>Included in Challenge Combo:</strong> Disc UFO · Space Spinner · Sky Warrior · Mysterious Universe · Happy Train</div>
+            <span class="timeline-cost">Challenge Combo: ~RM62-77 per person</span>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.klook.com/en-SG/activity/32044-suoi-tien-theme-park-ho-chi-minh/" target="_blank">📅 Book Tickets</a>
+              <a class="loc-btn" href="https://www.google.com/maps/search/?api=1&query=Suoi+Tien+Theme+Park" target="_blank">🗺️ Maps</a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">11:45 AM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">⚡ Premium Add-On Rides (Pay Separately)</div>
+            <div class="timeline-desc"><strong>18 Levels of Hell</strong> — ~RM8. MUST DO. Only in Vietnam! Buddhist underworld journey, darkly unique. <br><strong>Steel Roller Coaster</strong> — ~RM8. Biggest thrill ride, 1,200m track, 60 km/h!</div>
+            <span class="timeline-cost">~RM16 per person extra</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">12:15 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🍽️ Lunch at Park Food Court</div>
+            <div class="timeline-desc"><strong>⚠️ Halal options are limited at Suoi Tien.</strong> Safest bets: fried rice, noodles, vegetarian options. Bring your own halal snacks as backup. Drinks: fresh coconut water ~RM4-6.</div>
+            <span class="timeline-cost">~RM9-15 per person</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">12:45 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🌊 Water Park — Bien Tien Dong Fairy Beach <span class="badge badge-fun">FUN</span></div>
+            <div class="timeline-desc">Change into swimwear and hit the water park! <strong>Wave pool, 8 water slides, lazy river, dragon boat, water basketball.</strong> Spend a good 2 hours here. Keep valuables in locker!</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">3 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🚂 Happy Train + Exit Park</div>
+            <div class="timeline-desc">Hop on the Happy Train for a scenic ride around the park — great way to dry off! Collect locker items, get changed and head out. Metro back to hotel.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">5:30 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🍽️ Dinner — Pho Rahim or Halal Com Tam <span class="badge badge-food">HALAL ✅</span></div>
+            <div class="timeline-desc">Proper halal dinner after the big day out. Head to <strong>Pho Rahim</strong> or <strong>Halal Com Tam</strong> near the hotel. Then optional evening at <strong>Saigon Square</strong> for shopping or rest!</div>
+            <span class="halal-note">🟢 Halal Verified</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="day-content" id="day-4">
+      <div class="day-header">
+        <div><div class="day-header-date">Friday · 10 April 2026</div><div class="day-header-title">Mekong Delta + Final Pickleball</div></div>
+        <div class="day-tags"><span class="day-tag">🚤 Day Tour</span><span class="day-tag">🏸 Fun Play</span><span class="day-tag">🌃 Farewell</span></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">6 AM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🚤 Mekong Delta Full Day Tour — Depart! <span class="badge badge-tour">TOUR</span></div>
+            <div class="timeline-desc">Pick up from hotel at <strong>6:00 AM sharp!</strong> Full day exploring the Mekong Delta — floating markets, scenic boat rides through canals, tropical fruit orchards, coconut candy workshop, and local village visits.<br><strong>⚠️ CONFIRM HALAL LUNCH when booking the tour!</strong></div>
+            <span class="timeline-cost">~RM80 per person via Klook</span>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.klook.com/en-SG/activity/1210-mekong-delta-full-day-tour-ho-chi-minh/" target="_blank">📅 Book on Klook</a>
+              <a class="loc-btn" href="https://www.google.com/maps/search/?api=1&query=Mekong+Delta+Vietnam" target="_blank">🗺️ Maps</a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">12:30 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🍽️ Mekong Lunch — included with tour <span class="badge badge-food">HALAL ✅</span></div>
+            <div class="timeline-desc">Traditional Mekong lunch. Fresh produce, local specialties. Halal arrangement confirmed in advance with tour operator.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">1 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🌿 Continue Tour</div>
+            <div class="timeline-desc">More canal boat rides, coconut candy-making demo, explore local villages. Return journey back to HCMC, arriving around <strong>4:00–4:30 PM</strong>.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">5 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🚿 Rest & Freshen Up at Hotel</div>
+            <div class="timeline-desc">Quick shower and rest before the final pickleball session of the trip!</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">6 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🏸 Pickleball Session #3 — Fun Play! <span class="badge badge-sport">SPORT</span></div>
+            <div class="timeline-desc">Final pickleball session — just the four of us! Casual, relaxed group gameplay. No pressure, just pure fun. Celebrate a great trip on the court!</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">8:30 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🌃 Farewell Dinner <span class="badge badge-food">HALAL ✅</span></div>
+            <div class="timeline-desc">Make it special! Options: <strong>Pho Muslim @ District 1</strong> for a classic send-off, or <strong>The Daun Restaurant</strong> for a nicer sit-down meal. Reminisce about the trip!</div>
+            <span class="timeline-cost">~RM23-38 per person</span>
+            <span class="halal-note">🟢 Halal Verified</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">10 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🧳 Pack & Rest</div>
+            <div class="timeline-desc">Pack your bags tonight — flight departs at <strong>21:10 tomorrow</strong>. Early rest so you can enjoy the last morning!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 5 -->
+    <div class="day-content" id="day-5">
+      <div class="day-header">
+        <div><div class="day-header-date">Saturday · 11 April 2026</div><div class="day-header-title">Last Morning & Departure</div></div>
+        <div class="day-tags"><span class="day-tag">☕ Coffee</span><span class="day-tag">🛍️ Shopping</span><span class="day-tag">✈️ Fly Home</span></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">8 AM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">☕ Breakfast & Vietnamese Coffee <span class="badge badge-food">HALAL ✅</span></div>
+            <div class="timeline-desc">Last Vietnamese coffee in Saigon! Try <strong>Katinat</strong> or <strong>Cong Ca Phe</strong>. Must-order: <strong>Ca Phe Sua Da</strong> — Vietnamese iced coffee with condensed milk. Heaven!</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">9 AM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🏩 Nha Tho Tan Binh — Castle Barbie!</div>
+            <div class="timeline-desc">The iconic pink church! Instagram-worthy photos guaranteed. About 15-20 min Grab ride from hotel. Free entry, stunning architecture. Don't miss this one!</div>
+            <span class="timeline-cost">Grab: ~RM8-12 each way</span>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Tan+Dinh+Pink+Church+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+              <a class="loc-btn" href="https://www.grab.com/sg/download/" target="_blank">🚕 Book Grab</a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">10:30 AM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🛍️ Last Minute Shopping</div>
+            <div class="timeline-desc"><strong>Ben Thanh Market</strong> for souvenirs (bargain!), <strong>Saigon Square</strong> for clothes and bags. Don't forget Vietnamese coffee beans, lacquerware, and silk as gifts!</div>
+            <div class="location-actions">
+              <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Ben+Thanh+Market" target="_blank">🗺️ Ben Thanh</a>
+              <a class="loc-btn" href="https://www.google.com/maps/search/?api=1&query=Saigon+Square+Ho+Chi+Minh" target="_blank">🗺️ Saigon Square</a>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">12:30 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🍜 Final Halal Lunch in Saigon <span class="badge badge-food">HALAL ✅</span></div>
+            <div class="timeline-desc">Last proper meal! Head to <strong>Pho Rahim</strong> (where it all started on Day 1 — full circle!). Or try <strong>Halal Com Tam</strong> for a different farewell dish.</div>
+            <span class="timeline-cost">~RM8-12 per person</span>
+            <span class="halal-note">🟢 Halal Verified</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">2 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">🏨 Hotel Check-Out</div>
+            <div class="timeline-desc">Collect all belongings. Double check the safe! Store luggage at reception if your flight is late. Final bathroom break.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time"><span class="time-badge">6:30 PM</span></div>
+          <div class="timeline-body">
+            <div class="timeline-title">✈️ Grab to Airport — Depart for KL! <span class="badge badge-travel">TRAVEL</span></div>
+            <div class="timeline-desc">Book your Grab by <strong>6:00–6:30 PM</strong> latest. Travel time: 30-60 min to Tan Son Nhat Airport (depends on traffic). Flight <strong>AK525 departs at 21:10</strong>. Arrive at airport by 7:30–8:00 PM for check-in. Safe travels!</div>
+            <span class="timeline-cost">Grab to airport: ~RM23-31</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PICKLEBALL -->
+<section id="pickleball" class="bg-alt">
+  <div class="section-inner">
+    <div class="section-label reveal">Stay active</div>
+    <h2 class="section-title reveal">Pickleball <span>3 Days</span></h2>
+    <div class="divider reveal"></div>
+    <div class="pb-grid">
+      <div class="pb-card reveal">
+        <div class="pb-icon">🎯</div>
+        <div class="pb-day">Day 2 · April 8 · Morning</div>
+        <div class="pb-title">Coaching Session</div>
+        <div class="pb-desc">Professional coaching at Reclub. Learn techniques, strategies, and drills with a certified coach. Perfect for levelling up your game before the social sessions.</div>
+      </div>
+      <div class="pb-card reveal reveal-delay-1">
+        <div class="pb-icon">🤝</div>
+        <div class="pb-day">Day 3 · April 9 · Early Morning</div>
+        <div class="pb-title">Social Game</div>
+        <div class="pb-desc">Connect with the local Vietnamese pickleball community! Play alongside new friends, experience the local sports culture and maybe find a rivalry or two.</div>
+      </div>
+      <div class="pb-card reveal reveal-delay-2">
+        <div class="pb-icon">🎉</div>
+        <div class="pb-day">Day 4 · April 10 · Evening</div>
+        <div class="pb-title">Fun Play</div>
+        <div class="pb-desc">Exclusive session — just our group of four! Casual, no pressure, pure enjoyment. The perfect way to celebrate the final evening of the trip together on the court.</div>
+      </div>
+    </div>
+    <div class="flight-note reveal">
+      <span class="icon">📋</span>
+      <div><strong>Venue:</strong> Reclub, Ho Chi Minh City &nbsp;·&nbsp; <strong>Duration:</strong> 2 hours per session &nbsp;·&nbsp; <strong>What to bring:</strong> Sports attire, paddle, water bottle, towel &nbsp;·&nbsp; ⚠️ <strong>Book ALL sessions in advance before the trip!</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUOI TIEN -->
+<section id="suoitien">
+  <div class="section-inner">
+    <div class="section-label reveal">Day 3 · Theme Park</div>
+    <h2 class="section-title reveal">Suoi Tien <span>Adventures</span></h2>
+    <div class="divider reveal"></div>
+    <div class="st-package reveal">
+      <div class="st-package-title">Booked Package 🎟️</div>
+      <div class="st-package-name">Challenge Combo + Water Park</div>
+      <div class="st-price">Book via Klook before April 9 &nbsp;·&nbsp; <strong>~RM62–77 per person</strong> &nbsp;·&nbsp; Total 4 pax: ~RM248–308</div>
+      <div class="st-includes">
+        <div class="st-include-item"><div class="dot"></div><span>🎫 Park Entry (Vé Cổng)</span></div>
+        <div class="st-include-item"><div class="dot"></div><span>🚂 Happy Tourist Train</span></div>
+        <div class="st-include-item"><div class="dot"></div><span>🛸 Disc-Shaped UFO (Flying Saucer)</span></div>
+        <div class="st-include-item"><div class="dot"></div><span>🪂 Sky Conqueror / Pendulum Ride</span></div>
+        <div class="st-include-item"><div class="dot"></div><span>🌀 Space Spinner (Vòng Xoay Vũ Trụ)</span></div>
+        <div class="st-include-item"><div class="dot"></div><span>🚀 Mysterious Universe Dark Ride</span></div>
+        <div class="st-include-item"><div class="dot"></div><span>🐉 Dragon Boat / Viking Boat</span></div>
+        <div class="st-include-item"><div class="dot"></div><span>🌊 Full Water Park Access (Fairy Beach)</span></div>
+      </div>
+      <div class="st-warning">⚠️ <span><strong>Halal food is limited at Suoi Tien.</strong> Bring your own halal snacks! Safest park options: fried rice, noodles, vegetarian dishes. Have a proper halal meal before or after.</span></div>
+    </div>
+    <h3 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:1rem;font-size:1.2rem;" class="reveal">⚡ Must-Do Add-Ons <span style="font-size:0.8rem;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:400;">(pay separately at park)</span></h3>
+    <div class="addon-grid reveal">
+      <div class="addon-card">
+        <div class="addon-title">🔥 18 Levels of Hell</div>
+        <div class="addon-desc">The most unique ride in Vietnam — a dark journey through Buddhist underworld scenes. Absolutely one-of-a-kind, you won't find this anywhere else. MUST DO!</div>
+        <span class="addon-price">~RM8 per person</span>
+      </div>
+      <div class="addon-card">
+        <div class="addon-title">🎢 Steel Roller Coaster</div>
+        <div class="addon-desc">The park's biggest thrill ride — 1,200m track, 30m high, hits 60 km/h. The main attraction for adrenaline seekers. Don't skip this one!</div>
+        <span class="addon-price">~RM8 per person</span>
+      </div>
+    </div>
+    <br>
+    <div class="flight-note reveal">
+      <span class="icon">⏰</span>
+      <div><strong>Day 3 Park Schedule:</strong> Arrive 11 AM → Thrill rides (11–11:45 AM) → Add-on rides (11:45 AM–12:15 PM) → Lunch (12:15–12:45 PM) → Water Park (12:45–2:45 PM) → Happy Train + Exit (3 PM) &nbsp;·&nbsp; <strong>Metro back to hotel: ~RM3</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- HALAL FOOD -->
+<section id="halal" class="bg-alt">
+  <div class="section-inner">
+    <div class="section-label reveal">Muslim-friendly dining</div>
+    <h2 class="section-title reveal">Halal <span>Food Guide</span></h2>
+    <div class="divider reveal"></div>
+
+    <!-- FILTER BAR -->
+    <div class="halal-filter-bar reveal">
+      <button class="halal-filter-btn active" onclick="filterHalal('all', this)">🍽️ All</button>
+      <button class="halal-filter-btn" onclick="filterHalal('top', this)">⭐ Top Picks</button>
+      <button class="halal-filter-btn" onclick="filterHalal('halal', this)">✅ Halal</button>
+      <button class="halal-filter-btn" onclick="filterHalal('mixed', this)">🤷 Mixed</button>
+      <button class="halal-filter-btn" onclick="filterHalal('avoid', this)">❌ Avoid</button>
+    </div>
+
+    <div class="halal-grid">
+      <div class="halal-card top" data-type="top">
+        <span class="halal-badge hb-top">⭐ TOP PICK</span>
+        <div class="halal-name">Pho Rahim</div>
+        <div class="halal-desc">@ District 1 · Most recommended by Malaysian Muslim travellers. Authentic Vietnamese pho, fully halal certified. Best pho in the city!</div>
+        <div class="halal-card-actions">
+          <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Pho+Rahim+District+1+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+          <button class="loc-btn" onclick="shareLocation('Pho Rahim','District 1')">📤 Share</button>
+        </div>
+      </div>
+      <div class="halal-card top" data-type="top">
+        <span class="halal-badge hb-top">⭐ TOP PICK</span>
+        <div class="halal-name">The Daun Restaurant</div>
+        <div class="halal-desc">Modern Vietnamese halal cuisine. Great ambiance, solid menu, good for a sit-down group dinner.</div>
+        <div class="halal-card-actions">
+          <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=The+Daun+Restaurant+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+          <button class="loc-btn" onclick="shareLocation('The Daun','HCMC')">📤 Share</button>
+        </div>
+      </div>
+      <div class="halal-card" data-type="halal">
+        <span class="halal-badge hb-halal">✅ HALAL</span>
+        <div class="halal-name">Halal Com Tam</div>
+        <div class="halal-desc">Broken rice with grilled items — a classic Vietnamese dish done halal. Filling and affordable.</div>
+        <div class="halal-card-actions">
+          <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Halal+Com+Tam+District+1+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+        </div>
+      </div>
+      <div class="halal-card" data-type="halal">
+        <span class="halal-badge hb-halal">✅ HALAL</span>
+        <div class="halal-name">Pho Muslim</div>
+        <div class="halal-desc">@ District 1 · Variety of Vietnamese dishes, halal certified. Good backup option especially at dinner.</div>
+        <div class="halal-card-actions">
+          <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Pho+Muslim+District+1+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+        </div>
+      </div>
+      <div class="halal-card" data-type="halal">
+        <span class="halal-badge hb-halal">✅ HALAL</span>
+        <div class="halal-name">Oasis Cafe</div>
+        <div class="halal-desc">Halal cafe good for coffee and light meals. Relaxed vibe, great for afternoon breaks.</div>
+        <div class="halal-card-actions">
+          <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Oasis+Cafe+Ho+Chi+Minh+Halal" target="_blank">🗺️ Maps</a>
+        </div>
+      </div>
+      <div class="halal-card" data-type="halal">
+        <span class="halal-badge hb-halal">☕ GOOD</span>
+        <div class="halal-name">Katinat</div>
+        <div class="halal-desc">Super affordable! "Air tekak Melayu" — the flavours feel familiar. Great for breakfast or a quick drink. Highly recommended!</div>
+        <div class="halal-card-actions">
+          <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Katinat+District+1+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+        </div>
+      </div>
+      <div class="halal-card" data-type="halal">
+        <span class="halal-badge hb-halal">☕ GOOD</span>
+        <div class="halal-name">Cong Ca Phe</div>
+        <div class="halal-desc">Communist-themed cafe. Iconic HCMC experience. Great for coffee, photos and atmosphere.</div>
+        <div class="halal-card-actions">
+          <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Cong+Caphe+District+1+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+        </div>
+      </div>
+      <div class="halal-card mixed" data-type="mixed">
+        <span class="halal-badge hb-mixed">🤷 MIXED</span>
+        <div class="halal-name">Basiroh @ Malaysian Street</div>
+        <div class="halal-desc">Some say nice, some say not nice. Worth a try if nearby, but don't make it a main plan.</div>
+        <div class="halal-card-actions">
+          <a class="loc-btn primary" href="https://www.google.com/maps/search/?api=1&query=Basiroh+Malaysian+Street+Ho+Chi+Minh" target="_blank">🗺️ Maps</a>
+        </div>
+      </div>
+      <div class="halal-card avoid" data-type="avoid">
+        <span class="halal-badge hb-avoid">❌ AVOID</span>
+        <div class="halal-name">Jamilah</div>
+        <div class="halal-desc">Not recommended by the Muslim community. Skip this one entirely — plenty of better options nearby.</div>
+      </div>
+    </div>
+    <br>
+    <div class="flight-note reveal">
+      <span class="icon">🕌</span>
+      <div>Always ask: <strong>"Ada halal?"</strong> or <strong>"Is this halal?"</strong> when unsure. Look for halal certification displayed at the entrance. Bring emergency halal snacks for theme parks and tours where options are limited.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BUDGET -->
+<section id="budget">
+  <div class="section-inner">
+    <div class="section-label reveal">Money matters</div>
+    <h2 class="section-title reveal">Budget <span>Overview</span></h2>
+    <div class="divider reveal"></div>
+
+    <!-- CURRENCY CONVERTER -->
+    <div class="currency-widget reveal">
+      <div class="currency-label">💱 Currency Converter</div>
+      <div class="currency-rate">10,000 VND = <span>RM1.54</span></div>
+      <div class="currency-input-row">
+        <div class="currency-input-group">
+          <label>VND (Vietnamese Dong)</label>
+          <input type="number" id="vnd-input" value="100000" oninput="convertVND()" placeholder="VND">
+        </div>
+        <div class="currency-arrow" onclick="swapCurrencies()" title="Swap">⇄</div>
+        <div class="currency-input-group">
+          <label>MYR (Malaysian Ringgit)</label>
+          <input type="number" id="myr-input" value="15.40" oninput="convertMYR()" placeholder="RM">
+        </div>
+      </div>
+      <div class="quick-convert">
+        <button class="qc-btn" onclick="quickConvert(50000)">50k VND</button>
+        <button class="qc-btn" onclick="quickConvert(100000)">100k VND</button>
+        <button class="qc-btn" onclick="quickConvert(500000)">500k VND</button>
+        <button class="qc-btn" onclick="quickConvert(1000000)">1M VND</button>
+      </div>
+    </div>
+
+    <table class="budget-table reveal">
+      <thead>
+        <tr><th>Item</th><th>Cost Per Person</th><th>4 Pax Total</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>✈️ Return Flights (AK520 + AK525)</td><td>RM341</td><td>RM1,364</td><td><span class="cost-badge cost-booked">Booked ✅</span></td></tr>
+        <tr><td>🏨 Accommodation (Nicecy Hotel, 4 nights)</td><td>RM150</td><td>RM600</td><td><span class="cost-badge cost-booked">Booked ✅</span></td></tr>
+        <tr><td>🪖 Cu Chi Tunnels Half-Day Tour</td><td>~RM80</td><td>~RM320</td><td><span class="cost-badge cost-rm">Book Klook</span></td></tr>
+        <tr><td>🎢 Suoi Tien Challenge Combo + Water Park</td><td>~RM77</td><td>~RM308</td><td><span class="cost-badge cost-rm">Book Klook</span></td></tr>
+        <tr><td>⚡ Suoi Tien Add-On Rides</td><td>~RM16</td><td>~RM64</td><td><span class="cost-badge cost-rm">Pay at Park</span></td></tr>
+        <tr><td>🚤 Mekong Delta Full Day Tour</td><td>~RM80</td><td>~RM320</td><td><span class="cost-badge cost-rm">Book Klook</span></td></tr>
+        <tr><td>🍽️ Daily Meals (5 days)</td><td>~RM35/day × 5</td><td>~RM700</td><td><span class="cost-badge cost-rm">Halal Only</span></td></tr>
+        <tr><td>🚕 Transport (Grab + Metro)</td><td>~RM50</td><td>~RM200</td><td><span class="cost-badge cost-rm">Estimate</span></td></tr>
+        <tr><td>🛡️ Travel Insurance (ETIQA)</td><td>RM30</td><td>RM120</td><td><span class="cost-badge cost-rm">Buy Now</span></td></tr>
+        <tr><td>🛍️ Shopping & Souvenirs</td><td>~RM50-100</td><td>~RM200-400</td><td><span class="cost-badge cost-rm">Optional</span></td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td><strong>💰 ESTIMATED TOTAL PER PERSON</strong></td><td colspan="3"><strong>RM841 – RM966</strong> (excluding accommodation + shopping)</td></tr>
+      </tfoot>
+    </table>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section id="checklist" class="bg-alt">
+  <div class="section-inner">
+    <div class="section-label reveal">Don't forget</div>
+    <h2 class="section-title reveal">Pre-Trip <span>Checklist</span></h2>
+    <div class="divider reveal"></div>
+
+    <!-- PROGRESS BAR FOR CHECKLIST -->
+    <div class="reveal">
+      <div class="check-progress-label">
+        <span>Trip readiness: <strong id="progress-pct">0%</strong></span>
+        <span id="progress-count">0 / 0 items done</span>
+      </div>
+      <div class="check-progress-bar">
+        <div class="check-progress-fill" id="check-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="check-grid">
+      <div class="check-section reveal">
+        <h3>✅ Already Booked</h3>
+        <label class="check-item"><input type="checkbox" checked onchange="updateProgress()"><label>Flight tickets — AK520 + AK525 (RM341)</label></label>
+        <label class="check-item"><input type="checkbox" checked onchange="updateProgress()"><label>Add-on luggage</label></label>
+        <label class="check-item"><input type="checkbox" checked onchange="updateProgress()"><label>Accommodation at Nicecy Hotel</label></label>
+      </div>
+      <div class="check-section reveal reveal-delay-1">
+        <h3>📋 To Book Before Trip</h3>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Pickleball sessions (Day 2, 3, 4) at Reclub</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Cu Chi Tunnels half-day tour via Klook</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Suoi Tien Challenge Combo + Water Park via Klook</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Mekong Delta day tour via Klook (confirm halal lunch!)</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Travel Insurance — ETIQA (RM30)</label></label>
+      </div>
+      <div class="check-section reveal reveal-delay-2">
+        <h3>🛒 To Buy</h3>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Vietnam SIM Card (link: my.shp.ee/kW1Jw9s)</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Travel bidet</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Penimbang luggage (luggage scale)</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Tripod</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Camera Canon</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Insta360 Ace Pro 2</label></label>
+      </div>
+      <div class="check-section reveal reveal-delay-3">
+        <h3>🎒 To Pack</h3>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Comfortable walking shoes</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Swimwear + towel (Suoi Tien water park)</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Light breathable clothes (5 outfits)</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Sports attire x3 (pickleball sessions)</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Sunscreen SPF 50+ (ESSENTIAL!)</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Hat/cap + sunglasses</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Waterproof phone pouch</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Power bank</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Travel adapter (Type A/C/D)</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Halal emergency snacks</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Basic medications</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>Passport (min 6 months validity)</label></label>
+        <label class="check-item"><input type="checkbox" onchange="updateProgress()"><label>All booking confirmation QR codes</label></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section id="tips">
+  <div class="section-inner">
+    <div class="section-label reveal">Good to know</div>
+    <h2 class="section-title reveal">Travel <span>Tips</span></h2>
+    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1.5rem;" class="reveal">💡 Click any card for more details</p>
+    <div class="divider reveal"></div>
+    <div class="tips-grid">
+      <div class="tip-card reveal" onclick="openModal('🌡️','Weather in April','Hot and humid, <strong>28–35°C</strong>. Your dates (Apr 7–11) are ideal — fewer heavy showers. <strong>Schedule outdoor activities in the morning</strong> as thunderstorms often pop up in the afternoon. Sunscreen is non-negotiable! Carry a small umbrella just in case. Stay hydrated — drink lots of water!')">
+        <div class="tip-card-icon">🌡️</div>
+        <div class="tip-card-title">Weather in April</div>
+        <div class="tip-card-body">Hot and humid, <strong>28–35°C</strong>. Your dates (Apr 7–11) are ideal — fewer heavy showers. <strong>Schedule outdoor activities in the morning.</strong></div>
+      </div>
+      <div class="tip-card reveal reveal-delay-1" onclick="openModal('📱','Apps to Download','<strong>Grab</strong> — taxis &amp; bikes (MUST HAVE, download before leaving Malaysia!)<br><br><strong>Google Maps</strong> — download HCMC offline map before you go<br><br><strong>Google Translate</strong> — point camera at Vietnamese text<br><br><strong>Klook</strong> — tour bookings<br><br><strong>Halal Navi</strong> — find halal food near you<br><br><strong>Grab Pay</strong> — cashless payments in Vietnam')">
+        <div class="tip-card-icon">📱</div>
+        <div class="tip-card-title">Apps to Download</div>
+        <div class="tip-card-body"><strong>Grab</strong> — taxis &amp; bikes (MUST HAVE)<br><strong>Google Maps</strong> — navigation<br><strong>Google Translate</strong> — scan Vietnamese text<br><strong>Klook</strong> — tour bookings</div>
+      </div>
+      <div class="tip-card reveal reveal-delay-2" onclick="openModal('💵','Money Tips','Withdraw VND at ATMs for best rates — avoid airport exchange counters. Carry <strong>small bills</strong> (10k, 20k, 50k notes) for street food and tipping. Many small stalls are cash only. Budget ~<strong>500k–700k VND/day</strong> per person for meals + transport. Always count your change!')">
+        <div class="tip-card-icon">💵</div>
+        <div class="tip-card-title">Money Tips</div>
+        <div class="tip-card-body">Withdraw VND at ATMs for best rates. Carry <strong>small bills</strong> (10k, 20k, 50k notes). Budget ~<strong>500k–700k VND/day</strong> per person for meals + transport.</div>
+      </div>
+      <div class="tip-card reveal" onclick="openModal('🛺','Getting Around','<strong>Grab</strong> for most rides — always cheaper than street taxis. Always set your destination in Grab before getting in. <strong>Metro Line 1</strong> for Suoi Tien — incredibly cheap at ~RM3. <strong>Walking</strong> for District 1 — hotel is central. Tour pick-ups come straight to hotel! Avoid unlicensed taxis — always use Grab.')">
+        <div class="tip-card-icon">🛺</div>
+        <div class="tip-card-title">Getting Around</div>
+        <div class="tip-card-body"><strong>Grab</strong> for most rides — always cheaper than street taxis. <strong>Metro Line 1</strong> for Suoi Tien. <strong>Walking</strong> for District 1 — hotel is central.</div>
+      </div>
+      <div class="tip-card reveal reveal-delay-1" onclick="openModal('🕌','Muslim Travel Tips','Always ask <strong>&quot;Ada halal?&quot;</strong> when unsure. Bring halal snacks for parks and tours. Prayer facilities may be limited — use Google Maps to find nearby mosques. Dress modestly at religious sites. The closest mosque to the hotel is Masjid Jamia\'at al-Muslimin (~15 min Grab). Friday prayers: plan ahead!')">
+        <div class="tip-card-icon">🕌</div>
+        <div class="tip-card-title">Muslim Travel Tips</div>
+        <div class="tip-card-body">Always ask <strong>"Ada halal?"</strong> when unsure. Bring halal snacks for parks and tours. Prayer facilities may be limited — use Google Maps for nearby mosques.</div>
+      </div>
+      <div class="tip-card reveal reveal-delay-2" onclick="openModal('🤝','Culture & Safety','Remove shoes at temples. <strong>Bargain at markets</strong> — start at 50% of asking price, smile and be friendly about it. Watch for pickpockets in crowds — keep phone in front pocket. Cross roads carefully — traffic is WILD (look both ways multiple times!). Drink bottled water only. Never leave bags unattended.')">
+        <div class="tip-card-icon">🤝</div>
+        <div class="tip-card-title">Culture & Safety</div>
+        <div class="tip-card-body">Remove shoes at temples. <strong>Bargain at markets</strong> — start at 50% of asking price. Watch for pickpockets in crowds. Cross roads carefully — traffic is WILD.</div>
+      </div>
+      <div class="tip-card reveal" onclick="openModal('🚨','Emergency Contacts','<strong>Police:</strong> 113<br><strong>Ambulance:</strong> 115<br><strong>Fire:</strong> 114<br><strong>Tourist Hotline:</strong> 1087<br><strong>Malaysian Embassy HCMC:</strong> +84 28 3829 9023<br><strong>Malaysian Embassy Hanoi:</strong> +84 24 3734 3836<br><br>Save these in your phone before you travel!')">
+        <div class="tip-card-icon">🚨</div>
+        <div class="tip-card-title">Emergency Contacts</div>
+        <div class="tip-card-body"><strong>Police:</strong> 113<br><strong>Ambulance:</strong> 115<br><strong>Fire:</strong> 114<br><strong>Tourist Hotline:</strong> 1087<br><strong>Malaysian Embassy:</strong> +84 24 3734 3836</div>
+      </div>
+      <div class="tip-card reveal reveal-delay-1" onclick="openModal('☕','Apartment Cafe Tip','The Cafe Apartment building at 42 Nguyen Hue has great views and multiple cafes inside. <strong>Take the stairs — there is a charge for the lift!</strong> The views from higher floors are worth the climb. The best cafes are on floors 3, 4, and 5. Great for photos and afternoon coffee vibes. It\'s a 10-15 min walk from the hotel.')">
+        <div class="tip-card-icon">☕</div>
+        <div class="tip-card-title">Apartment Cafe Tip</div>
+        <div class="tip-card-body">The Cafe Apartment building has great views and multiple cafes inside. <strong>Take the stairs — there's a charge for the lift!</strong> Views from higher floors are worth the climb.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>🇻🇳 &nbsp;<strong>Ho Chi Minh City</strong> &nbsp;·&nbsp; April 7–11, 2026 &nbsp;·&nbsp; 5 Days 4 Nights</p>
+  <p style="margin-top:0.4rem;">Sport & Travel Combined &nbsp;·&nbsp; Prepared by <strong>AbuHafiz</strong></p>
+  <p style="margin-top:0.8rem;font-size:0.72rem;opacity:0.5;">
+    🔍 Press Ctrl+K / Cmd+K to search · Click 🗺️ for instant Google Maps · Click 📤 to share locations
+  </p>
+</footer>
+
+<script>
+  /* ── PLACES DATABASE ── */
+  const placesDB = [
+    {icon:'🍜',name:'Pho Rahim',type:'Restaurant',desc:'Top halal pho in District 1',day:'Day 1, 4, 5',url:'https://www.google.com/maps/search/?api=1&query=Pho+Rahim+District+1+Ho+Chi+Minh'},
+    {icon:'🍽️',name:'The Daun Restaurant',type:'Restaurant',desc:'Modern Vietnamese halal cuisine',day:'Day 1, 4',url:'https://www.google.com/maps/search/?api=1&query=The+Daun+Restaurant+Ho+Chi+Minh'},
+    {icon:'🏨',name:'Nicecy Hotel',type:'Hotel',desc:'Our accommodation - District 1',day:'All days',url:'https://maps.google.com/?q=345+Tran+Hung+Dao,+District+1,+Ho+Chi+Minh+City'},
+    {icon:'🏛️',name:'Saigon Central Post Office',type:'Attraction',desc:'French colonial architecture',day:'Day 1',url:'https://www.google.com/maps/search/?api=1&query=Saigon+Central+Post+Office'},
+    {icon:'⛪',name:'Notre-Dame Cathedral',type:'Attraction',desc:'Iconic cathedral (exterior)',day:'Day 1',url:'https://www.google.com/maps/search/?api=1&query=Notre-Dame+Cathedral+Ho+Chi+Minh'},
+    {icon:'🛍️',name:'Ben Thanh Market',type:'Shopping',desc:'Iconic market - bargain hard!',day:'Day 1, 5',url:'https://www.google.com/maps/search/?api=1&query=Ben+Thanh+Market+Ho+Chi+Minh'},
+    {icon:'🌃',name:'Bui Vien Walking Street',type:'Nightlife',desc:'Famous nightlife street',day:'Day 1',url:'https://www.google.com/maps/search/?api=1&query=Bui+Vien+Street+Ho+Chi+Minh'},
+    {icon:'☕',name:'Katinat',type:'Cafe',desc:'Affordable, Malay-friendly',day:'Day 2, 5',url:'https://www.google.com/maps/search/?api=1&query=Katinat+District+1+Ho+Chi+Minh'},
+    {icon:'🏸',name:'Reclub',type:'Sports',desc:'Pickleball venue',day:'Day 2, 3, 4',url:'https://www.google.com/maps/search/?api=1&query=Reclub+Ho+Chi+Minh+City+Pickleball'},
+    {icon:'🪖',name:'Cu Chi Tunnels',type:'Tour',desc:'Historic war tunnels',day:'Day 2',url:'https://www.google.com/maps/search/?api=1&query=Cu+Chi+Tunnels+Vietnam'},
+    {icon:'☕',name:'Apartment Cafe',type:'Cafe',desc:'Coffee with a view (take stairs!)',day:'Day 2',url:'https://www.google.com/maps/search/?api=1&query=42+Nguyen+Hue+Apartment+Cafe+Ho+Chi+Minh'},
+    {icon:'🍜',name:'Pho Muslim',type:'Restaurant',desc:'Halal Vietnamese variety',day:'Day 2',url:'https://www.google.com/maps/search/?api=1&query=Pho+Muslim+District+1+Ho+Chi+Minh'},
+    {icon:'☕',name:'Cong Ca Phe',type:'Cafe',desc:'Communist-themed, iconic',day:'Day 2, 5',url:'https://www.google.com/maps/search/?api=1&query=Cong+Caphe+District+1+Ho+Chi+Minh'},
+    {icon:'🎢',name:'Suoi Tien Theme Park',type:'Theme Park',desc:'Water park + thrill rides',day:'Day 3',url:'https://www.google.com/maps/search/?api=1&query=Suoi+Tien+Theme+Park'},
+    {icon:'🍽️',name:'Halal Com Tam',type:'Restaurant',desc:'Broken rice, halal',day:'Day 3',url:'https://www.google.com/maps/search/?api=1&query=Halal+Com+Tam+District+1+Ho+Chi+Minh'},
+    {icon:'🚤',name:'Mekong Delta',type:'Tour',desc:'Full day tour - book Klook',day:'Day 4',url:'https://www.google.com/maps/search/?api=1&query=Mekong+Delta+Vietnam'},
+    {icon:'🏩',name:'Tan Dinh Pink Church',type:'Attraction',desc:'Instagram-worthy pink church',day:'Day 5',url:'https://www.google.com/maps/search/?api=1&query=Tan+Dinh+Pink+Church+Ho+Chi+Minh'},
+    {icon:'🛍️',name:'Saigon Square',type:'Shopping',desc:'Clothes and bags',day:'Day 5',url:'https://www.google.com/maps/search/?api=1&query=Saigon+Square+Ho+Chi+Minh'},
+    {icon:'☕',name:'Oasis Cafe',type:'Cafe',desc:'Halal cafe, light meals',day:'Any',url:'https://www.google.com/maps/search/?api=1&query=Oasis+Cafe+Ho+Chi+Minh+Halal'},
+    {icon:'🍽️',name:'Basiroh',type:'Restaurant',desc:'Mixed reviews',day:'Any',url:'https://www.google.com/maps/search/?api=1&query=Basiroh+Malaysian+Street+Ho+Chi+Minh'},
+  ];
+
+  /* ── SEARCH FUNCTIONALITY ── */
+  function toggleSearch() {
+    const container = document.getElementById('search-container');
+    const input = document.getElementById('search-input');
+    if (container.classList.contains('visible')) {
+      container.classList.remove('visible');
+      input.value = '';
+      document.getElementById('search-results').classList.remove('show');
+    } else {
+      container.classList.add('visible');
+      setTimeout(() => input.focus(), 100);
+    }
+  }
+
+  function searchPlaces() {
+    const query = document.getElementById('search-input').value.toLowerCase().trim();
+    const results = document.getElementById('search-results');
+    
+    if (query.length < 2) {
+      results.classList.remove('show');
+      return;
+    }
+
+    const matches = placesDB.filter(p => 
+      p.name.toLowerCase().includes(query) || 
+      p.type.toLowerCase().includes(query) || 
+      p.desc.toLowerCase().includes(query) ||
+      p.day.toLowerCase().includes(query)
+    );
+
+    if (matches.length === 0) {
+      results.innerHTML = '<div class="search-no-results">🔍 No results found for "' + query + '"</div>';
+      results.classList.add('show');
+      return;
+    }
+
+    results.innerHTML = matches.map(p => `
+      <div class="search-result-item" onclick="window.open('${p.url}','_blank')">
+        <div class="search-result-icon">${p.icon}</div>
+        <div class="search-result-text">
+          <div class="search-result-title">${p.name}</div>
+          <div class="search-result-desc">${p.type} · ${p.desc} · ${p.day}</div>
+        </div>
+      </div>
+    `).join('');
+    results.classList.add('show');
+  }
+
+  // Close search results when clicking outside
+  document.addEventListener('click', (e) => {
+    const searchBox = document.querySelector('.search-box');
+    const fab = document.getElementById('search-fab');
+    if (searchBox && !searchBox.contains(e.target) && e.target !== fab) {
+      document.getElementById('search-results').classList.remove('show');
+    }
+  });
+
+  /* ── LOCATION ACTIONS ── */
+  function shareLocation(name, location) {
+    const text = `📍 ${name}, ${location} - from our HCMC trip itinerary`;
+    if (navigator.share) {
+      navigator.share({title: name, text: text})
+        .then(() => showToast('Shared!'))
+        .catch(() => copyToClipboard(text));
+    } else {
+      copyToClipboard(text);
+    }
+  }
+
+  function saveLocation(name, desc) {
+    const saved = JSON.parse(localStorage.getItem('savedPlaces') || '[]');
+    if (saved.find(p => p.name === name)) {
+      showToast('Already saved!');
+      return;
+    }
+    saved.push({name, desc, saved: new Date().toISOString()});
+    localStorage.setItem('savedPlaces', JSON.stringify(saved));
+    showToast('⭐ ' + name + ' saved!');
+  }
+
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text)
+      .then(() => showToast('📋 Copied to clipboard!'))
+      .catch(() => showToast('Could not copy'));
+  }
+
+  /* ── DAY TABS ── */
+  function showDay(num, el) {
+    document.querySelectorAll('.day-content').forEach(d => d.classList.remove('active'));
+    document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('day-' + num).classList.add('active');
+    el.classList.add('active');
+  }
+
+  /* ── CURRENCY CONVERTER ── */
+  function convertVND() {
+    const vnd = parseFloat(document.getElementById('vnd-input').value) || 0;
+    const myr = (vnd / 10000) * 1.54;
+    document.getElementById('myr-input').value = myr.toFixed(2);
+  }
+  function convertMYR() {
+    const myr = parseFloat(document.getElementById('myr-input').value) || 0;
+    const vnd = (myr / 1.54) * 10000;
+    document.getElementById('vnd-input').value = Math.round(vnd);
+  }
+  function quickConvert(vnd) {
+    document.getElementById('vnd-input').value = vnd;
+    convertVND();
+    showToast('💱 Converted ' + (vnd/1000).toFixed(0) + 'k VND → RM' + ((vnd / 10000) * 1.54).toFixed(2));
+  }
+  function swapCurrencies() {
+    const vnd = document.getElementById('vnd-input').value;
+    const myr = document.getElementById('myr-input').value;
+    document.getElementById('vnd-input').value = myr;
+    document.getElementById('myr-input').value = vnd;
+    showToast('🔄 Values swapped!');
+  }
+
+  /* ── COUNTDOWN ── */
+  function updateCountdown() {
+    const target = new Date('2026-04-07T06:55:00+08:00').getTime();
+    const now = new Date().getTime();
+    const diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '🛫';
+      document.getElementById('cd-hours').textContent = '🎉';
+      document.getElementById('cd-mins').textContent = '🇻🇳';
+      document.getElementById('cd-secs').textContent = '✈️';
+      return;
+    }
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const secs = Math.floor((diff % (1000*60)) / 1000);
+    document.getElementById('cd-days').textContent = days;
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  /* ── CHECKLIST PROGRESS ── */
+  function updateProgress() {
+    const all = document.querySelectorAll('.check-item input[type="checkbox"]');
+    const checked = document.querySelectorAll('.check-item input[type="checkbox"]:checked');
+    const pct = Math.round((checked.length / all.length) * 100);
+    document.getElementById('check-fill').style.width = pct + '%';
+    document.getElementById('progress-pct').textContent = pct + '%';
+    document.getElementById('progress-count').textContent = checked.length + ' / ' + all.length + ' items done';
+    if (pct === 100) showToast('🎉 All items checked! Ready for Vietnam!');
+  }
+  updateProgress();
+
+  /* ── HALAL FILTER ── */
+  function filterHalal(type, btn) {
+    document.querySelectorAll('.halal-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.halal-card').forEach(card => {
+      if (type === 'all' || card.dataset.type === type) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  /* ── TOAST ── */
+  let toastTimer;
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  /* ── MODAL ── */
+  function openModal(icon, title, body) {
+    document.getElementById('modal-icon').textContent = icon;
+    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-body').innerHTML = body;
+    document.getElementById('tipModal').classList.add('open');
+  }
+  function closeModal(e) {
+    if (e.target.id === 'tipModal') {
+      document.getElementById('tipModal').classList.remove('open');
+    }
+  }
+
+  /* ── PROGRESS BAR (SCROLL) ── */
+  window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const pct = (scrollTop / scrollHeight) * 100;
+    document.getElementById('progress-bar').style.width = pct + '%';
+
+    // Back to top
+    const btn = document.getElementById('back-top');
+    scrollTop > 400 ? btn.classList.add('visible') : btn.classList.remove('visible');
+
+    // Active nav highlight
+    let current = '';
+    document.querySelectorAll('section[id]').forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+
+    // Reveal on scroll
+    document.querySelectorAll('.reveal').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 60) el.classList.add('in-view');
+    });
+  });
+
+  /* ── INITIAL REVEAL ── */
+  document.querySelectorAll('.reveal').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) el.classList.add('in-view');
+  });
+
+  /* ── KEYBOARD SHORTCUTS ── */
+  document.addEventListener('keydown', (e) => {
+    // Ctrl/Cmd + K to open search
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      toggleSearch();
+    }
+  });
+</script>
+</body>
+</html>
